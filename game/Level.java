@@ -35,7 +35,16 @@ public class Level {
 				line = reader.readLine();
 				for (int x = 0; x < height; x++) {
 					byte b = line.getBytes()[x];
-					map_data[x][y] = input_map.get(b);
+					if (b > '1' && b < '6') {
+						int treesize = b - 49;
+						map_data[x][y] = MapRenderer.TREE_BOTTOM;
+						for (int i = y - 1; i > y - treesize; i--) {
+							map_data[x][i] = MapRenderer.TREE_MIDDLE;
+						}
+						map_data[x][y - treesize] = MapRenderer.TREE_TOP;
+					} else {
+						map_data[x][y] = input_map.get(b);
+					}
 				}
 			}
 			

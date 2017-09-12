@@ -88,10 +88,10 @@ public class Game {
         
         level = new game.Level("plains.lvl");
         player = new Character(true, 8, 6, "player.png");
-        player.direction = 2;
+        player.direction = Character.UP;
         
         Character narrator = new Character(false, 8, 5, "narrator.png");
-        narrator.direction = 3;
+        narrator.direction = Character.DOWN;
         
         characters.add(player);
         characters.add(narrator);

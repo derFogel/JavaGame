@@ -1,6 +1,9 @@
 package game;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public class DialogBox {
 	private String text;
@@ -16,6 +19,10 @@ public class DialogBox {
 	}
 	
 	public void render(Graphics graphic) {
-		graphic.drawRect(x, y, w, h);
+		graphic.setColor(Color.white);
+		graphic.fillRect(x + 5, y + 5, w - 10, 150);
+		graphic.setColor(Color.black);
+		((Graphics2D)graphic).setStroke(new BasicStroke(10));
+		graphic.drawRoundRect(x + 5, y, w - 10, 158, 5, 5);
 	}
 }
