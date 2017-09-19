@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 public class Game {
     private static JFrame frame;
     private static Canvas canvas;
+    private static DialogBox dialog = new DialogBox();
     protected static LinkedList<Character> characters;
     protected static Character player;
     protected static game.Level level;
@@ -28,13 +29,20 @@ public class Game {
 					switch (ke.getID()) {
 					case KeyEvent.KEY_PRESSED:
 						if (ke.getKeyCode() == KeyEvent.VK_W) {
+							if (dialog.isOpen()) break;
 							Game.player.move(0, 1);
 						} else if (ke.getKeyCode() == KeyEvent.VK_S) {
+							if (dialog.isOpen()) break;
 							Game.player.move(0, -1);
 						} else if (ke.getKeyCode() == KeyEvent.VK_A) {
+							if (dialog.isOpen()) break;
 							Game.player.move(1, 0);
 						} else if (ke.getKeyCode() == KeyEvent.VK_D) {
+							if (dialog.isOpen()) break;
 							Game.player.move(-1, 0);
+						} else if (ke.getKeyCode() == KeyEvent.VK_SPACE) {
+							if (!dialog.isOpen()) break;
+							dialog.next();
 						}
 						break;
 					default:
@@ -100,7 +108,7 @@ public class Game {
         	chars.load();
         }
         
-        DialogBox dialog = new DialogBox("Test");
+        dialog.setDialog("tutorial");
 
         while (running) {
             bufferStrategy = canvas.getBufferStrategy();
