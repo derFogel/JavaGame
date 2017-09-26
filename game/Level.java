@@ -11,6 +11,7 @@ public class Level {
 	private int width;
 	private int height;
 	protected MapRenderer map;
+	public PathFinding pathfinder;
 	
 	public Level(String path) {
 		try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
@@ -30,7 +31,9 @@ public class Level {
 				input_map.put(line.getBytes()[i], (byte)i);
 			}
 						
-			byte map_data[][] = new byte[height][width];			
+			byte map_data[][] = new byte[height][width];
+			pathfinder = new PathFinding(width, height);
+			
 			for (int y = 0; y < width; y++) {
 				line = reader.readLine();
 				for (int x = 0; x < height; x++) {
@@ -38,12 +41,16 @@ public class Level {
 					if (b > '1' && b < '6') {
 						int treesize = b - 49;
 						map_data[x][y] = MapRenderer.TREE_BOTTOM;
+						pathfinder.blockField(x, y);
 						for (int i = y - 1; i > y - treesize; i--) {
 							map_data[x][i] = MapRenderer.TREE_MIDDLE;
 						}
 						map_data[x][y - treesize] = MapRenderer.TREE_TOP;
 					} else {
 						map_data[x][y] = input_map.get(b);
+						if (b == 49 || b == 48) {
+							pathfinder.blockField(x, y);
+						}
 					}
 				}
 			}

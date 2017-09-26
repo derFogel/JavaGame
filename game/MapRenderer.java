@@ -33,6 +33,8 @@ public class MapRenderer {
     public static final byte TREE_BOTTOM = 3;
     public static final byte TREE_MIDDLE = 4;
     public static final byte TREE_TOP = 5;
+    public static final byte CHEST = 6;
+    public static final int NUM_TILES = 7;
     
     public static final int tile_size = 40;
     
@@ -42,7 +44,7 @@ public class MapRenderer {
         this.width = width;
         this.height = heigt;
         
-        tiles = new Image[6];
+        tiles = new Image[NUM_TILES];
 
         File pathtofile = new File(path);
         BufferedImage tiles_data;
@@ -59,6 +61,7 @@ public class MapRenderer {
         tiles[TREE_BOTTOM] = tiles_data.getSubimage(60, 140, 20, 20);
         tiles[TREE_MIDDLE] = tiles_data.getSubimage(160, 120, 20, 20);
         tiles[TREE_TOP] = tiles_data.getSubimage(160, 100, 20, 20);
+        tiles[CHEST] = tiles_data.getSubimage(120, 20, 20, 20);
         
         offsetx = offsety = 0;
         toMoveX = toMoveY = 0;

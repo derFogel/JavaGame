@@ -97,4 +97,8 @@ public class DialogBox {
 	public Boolean isOpen() {
 		return isOpen;
 	}
+	
+	public String getDialog() {
+		return text;
+	}
 }

@@ -6,5 +6,10 @@
 		"Du wurdest durch einen Zufall indiese Welt gebracht.",
 		"Wie komm ich hier wieder weg?",
 		"Du musst den Meiser dieser Welt schlagen. Folge mir, ich zeige  dir, wie. (W, A, S, D)"
+	],
+	"tutorial_2" : [
+		"In dieser Kiste ist ein Spiel.  Wer es beherrscht, kann diese   Welt beherrschen.",
+		"Wie funktioniert es?",
+		"Nimm es dir! (E, wenn du an der Kiste stehst)"
 	]
 }

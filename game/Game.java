@@ -15,10 +15,12 @@ import javax.swing.JFrame;
 public class Game {
     private static JFrame frame;
     private static Canvas canvas;
-    private static DialogBox dialog = new DialogBox();
+    protected static DialogBox dialog = new DialogBox();
     protected static LinkedList<Character> characters;
     protected static Character player;
+    protected static Narrator narrator;
     protected static game.Level level;
+    protected static MiniGame minigame;
     
     private static void addKeyListenener() {
     	KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
@@ -28,6 +30,7 @@ public class Game {
 		    	synchronized (Game.class) {
 					switch (ke.getID()) {
 					case KeyEvent.KEY_PRESSED:
+						if (minigame.isOpen()) break;
 						if (ke.getKeyCode() == KeyEvent.VK_W) {
 							if (dialog.isOpen()) break;
 							Game.player.move(0, 1);
@@ -43,6 +46,9 @@ public class Game {
 						} else if (ke.getKeyCode() == KeyEvent.VK_SPACE) {
 							if (!dialog.isOpen()) break;
 							dialog.next();
+						} else if (ke.getKeyCode() == KeyEvent.VK_E) {
+							player.use();
+							minigame.open();
 						}
 						break;
 					default:
@@ -94,11 +100,13 @@ public class Game {
         BufferStrategy bufferStrategy;
         Graphics graphics;
         
+        minigame = new MiniGame();
+        
         level = new game.Level("plains.lvl");
         player = new Character(true, 8, 6, "player.png");
         player.direction = Character.UP;
         
-        Character narrator = new Character(false, 8, 5, "narrator.png");
+        narrator = new Narrator(false, 8, 5, "narrator.png");
         narrator.direction = Character.DOWN;
         
         characters.add(player);
@@ -109,6 +117,7 @@ public class Game {
         }
         
         dialog.setDialog("tutorial");
+        narrator.init();
 
         while (running) {
             bufferStrategy = canvas.getBufferStrategy();
@@ -117,6 +126,8 @@ public class Game {
 
             level.render(graphics);
             dialog.render(graphics);
+            narrator.update();
+            minigame.render(graphics);
             
             bufferStrategy.show();
             graphics.dispose();

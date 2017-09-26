@@ -11,6 +11,7 @@ public class Character extends Component {
 	public int y;
 	private int toMoveX;
 	private int toMoveY;
+	private boolean isMoving;
 	private Image texture;
 	public int direction;
 	private int anistate;
@@ -60,6 +61,8 @@ public class Character extends Component {
 			toMoveX = x * MapRenderer.tile_size;
 			toMoveY = y * MapRenderer.tile_size;
 			
+			isMoving = true;
+			
 			if (isPlayer) {
 				Game.level.map.move(x, y);
 			}
@@ -80,6 +83,10 @@ public class Character extends Component {
 			anistate++;
 		} else {
 			anistate = 0;
+		}
+		
+		if (toMoveX == 0 && toMoveY == 0) {
+			isMoving = false;
 		}
 		
 		int sy = -1;
@@ -104,6 +111,31 @@ public class Character extends Component {
 		graphic.drawImage(texture, px + 5, py, px + game.MapRenderer.tile_size - 5, py + game.MapRenderer.tile_size, 32 * (anistate / 4), sy, 32 * (anistate / 4) + 32, sy + 48, this);
 		if (anistate >= 15) {
 			anistate = 0;
+		}
+	}
+	
+	public boolean isMoving() {
+		return isMoving;
+	}
+	
+	public int calcDistanceTo(int tx, int ty) {
+		return Math.abs(x - tx) + Math.abs(y - ty);
+	}
+	
+	public void use() {
+		switch (direction) {
+		case 2:
+			System.out.println("picked up from: " + x + " " + y + " to: " + x + " " + (y - 1));
+			break;
+		case 3:
+			System.out.println("picked up from: " + x + " " + y + " to: " + x + " " + (y + 1));
+			break;
+		case 0:
+			System.out.println("picked up from: " + x + " " + y + " to: " + (x - 1) + " " + y);
+			break;
+		case 1:
+			System.out.println("picked up from: " + x + " " + y + " to: " + (x + 1) + " " + y);
+			break;
 		}
 	}
 }
