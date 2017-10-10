@@ -1,12 +1,10 @@
 package game;
 
-import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 
-public class Character extends Component {
-	private static final long serialVersionUID = 1L;
+public class Character {
 	public int x;
 	public int y;
 	private int toMoveX;
@@ -39,9 +37,9 @@ public class Character extends Component {
 		texture = toolkit.getImage(path);
 	}
 	
-	public void move(int x, int y) {
+	public boolean move(int x, int y) {
 		if (toMoveX != 0 || toMoveY != 0) {
-			return;
+			return false;
 		}
 		
 		if (x == 1) {
@@ -66,6 +64,10 @@ public class Character extends Component {
 			if (isPlayer) {
 				Game.level.map.move(x, y);
 			}
+			
+			return true;
+		} else {
+			return false;
 		}
 	}
 	
@@ -108,7 +110,7 @@ public class Character extends Component {
 			break;
 		}
 		
-		graphic.drawImage(texture, px + 5, py, px + game.MapRenderer.tile_size - 5, py + game.MapRenderer.tile_size, 32 * (anistate / 4), sy, 32 * (anistate / 4) + 32, sy + 48, this);
+		graphic.drawImage(texture, px + 5, py, px + game.MapRenderer.tile_size - 5, py + game.MapRenderer.tile_size, 32 * (anistate / 4), sy, 32 * (anistate / 4) + 32, sy + 48, null);
 		if (anistate >= 15) {
 			anistate = 0;
 		}
@@ -125,16 +127,24 @@ public class Character extends Component {
 	public void use() {
 		switch (direction) {
 		case 2:
-			System.out.println("picked up from: " + x + " " + y + " to: " + x + " " + (y - 1));
+			if (Game.level.map.map[x][y - 1].wObject != null) {
+				Game.level.map.map[x][y - 1].wObject.use();
+			}
 			break;
 		case 3:
-			System.out.println("picked up from: " + x + " " + y + " to: " + x + " " + (y + 1));
+			if (Game.level.map.map[x][y + 1].wObject != null) {
+				Game.level.map.map[x][y + 1].wObject.use();
+			}
 			break;
 		case 0:
-			System.out.println("picked up from: " + x + " " + y + " to: " + (x - 1) + " " + y);
+			if (Game.level.map.map[x - 1][y].wObject != null) {
+				Game.level.map.map[x - 1][y].wObject.use();
+			}
 			break;
 		case 1:
-			System.out.println("picked up from: " + x + " " + y + " to: " + (x + 1) + " " + y);
+			if (Game.level.map.map[x + 1][y].wObject != null) {
+				Game.level.map.map[x + 1][y].wObject.use();
+			}
 			break;
 		}
 	}

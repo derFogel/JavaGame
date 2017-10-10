@@ -8,15 +8,19 @@ package game;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
+import java.util.ArrayList;
 import java.util.LinkedList;
-
 import javax.swing.JFrame;
 
 public class Game {
-    private static JFrame frame;
+    /**
+	 * 
+	 */
+	private static JFrame frame;
     private static Canvas canvas;
     protected static DialogBox dialog = new DialogBox();
     protected static LinkedList<Character> characters;
+    protected static ArrayList<Card> inventory;
     protected static Character player;
     protected static Narrator narrator;
     protected static game.Level level;
@@ -30,25 +34,35 @@ public class Game {
 		    	synchronized (Game.class) {
 					switch (ke.getID()) {
 					case KeyEvent.KEY_PRESSED:
-						if (minigame.isOpen()) break;
 						if (ke.getKeyCode() == KeyEvent.VK_W) {
-							if (dialog.isOpen()) break;
+							if (dialog.isOpen() || minigame.isOpen()) break;
 							Game.player.move(0, 1);
 						} else if (ke.getKeyCode() == KeyEvent.VK_S) {
-							if (dialog.isOpen()) break;
+							if (dialog.isOpen() || minigame.isOpen()) break;
 							Game.player.move(0, -1);
 						} else if (ke.getKeyCode() == KeyEvent.VK_A) {
-							if (dialog.isOpen()) break;
+							if (dialog.isOpen() || minigame.isOpen()) break;
 							Game.player.move(1, 0);
 						} else if (ke.getKeyCode() == KeyEvent.VK_D) {
-							if (dialog.isOpen()) break;
+							if (dialog.isOpen() || minigame.isOpen()) break;
 							Game.player.move(-1, 0);
 						} else if (ke.getKeyCode() == KeyEvent.VK_SPACE) {
-							if (!dialog.isOpen()) break;
 							dialog.next();
 						} else if (ke.getKeyCode() == KeyEvent.VK_E) {
+							if (minigame.isOpen()) break;
 							player.use();
-							minigame.open();
+						} else if (ke.getKeyCode() == KeyEvent.VK_LEFT) {
+							if (minigame.isOpen()) {
+								minigame.select(-1);
+							}
+						} else if (ke.getKeyCode() == KeyEvent.VK_RIGHT) {
+							if (minigame.isOpen()) {
+								minigame.select(1);
+							}
+						} else if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
+							if (minigame.isOpen()) {
+								minigame.play();
+							}
 						}
 						break;
 					default:
@@ -112,12 +126,53 @@ public class Game {
         characters.add(player);
         characters.add(narrator);
         
+        Villager test = null;
+        
+        test = new Villager(47, 29, new Position[]{new Position(47, 29), new Position(48, 21), new Position(44, 24)}, "blatt_woman.png");
+        test.init();
+        characters.add(test);
+        
+        test = new Villager(28, 39, new Position[]{new Position(28, 39), new Position(51, 25), new Position(44, 24)}, "blatt_woman.png");
+        test.init();
+        characters.add(test);
+        
+        test = new Villager(43, 21, new Position[]{new Position(43, 21), new Position(54, 25), new Position(44, 30)}, "blatt_man.png");
+        test.init();
+        characters.add(test);
+        
+        test = new Villager(44, 27, new Position[]{new Position(44, 27), new Position(44, 27), new Position(51, 22)}, "blatt_man.png");
+        test.init();
+        characters.add(test);
+        
+        test = new Villager(8, 85, new Position[]{new Position(8, 85), new Position(20, 81), new Position(13, 89)}, "woman1.png");
+        test.init();
+        characters.add(test);
+        
+        test = new Villager(4, 89, new Position[]{new Position(4, 89), new Position(11, 85), new Position(8, 82)}, "woman1.png");
+        test.init();
+        characters.add(test);
+        
+        test = new Villager(19, 89, new Position[]{new Position(19, 89), new Position(7, 89), new Position(16, 81)}, "man1.png");
+        test.init();
+        characters.add(test);
+        
+        test = new Villager(23, 83, new Position[]{new Position(23, 83), new Position(12, 85), new Position(16, 89)}, "man1.png");
+        test.init();
+        characters.add(test);
+        
+        Character boss = new Character(false, 66, 4, "master.png");
+        characters.add(boss);
+        
+        level.map.map[66][4].wObject = new StartMsg();
+        
         for (Character chars : characters) {
         	chars.load();
         }
         
         dialog.setDialog("tutorial");
         narrator.init();
+        
+        inventory = new ArrayList<>();
 
         while (running) {
             bufferStrategy = canvas.getBufferStrategy();
@@ -125,13 +180,12 @@ public class Game {
             graphics.clearRect(0, 0, w, h);
 
             level.render(graphics);
+            minigame.render(graphics);
             dialog.render(graphics);
             narrator.update();
-            minigame.render(graphics);
             
             bufferStrategy.show();
             graphics.dispose();
         }
     }
-
 }

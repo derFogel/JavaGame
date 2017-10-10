@@ -1,103 +1,103 @@
 100 100
 map.png
-10 345C
-1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001
-1                                                                                                  1
-1  2  2   2    2                                                                                   1
-1   3  3    3        3  2    2                                                                     1
-1        4       3        4                                                                        1
-1    2        3     4 2  3                                                                         1
-1 4   2    32     2  4      3                                                                      1
-1   2           2  5   3     4                                                                     1
-1  3 3 4   3 4      3    2 2                                                                       1
-1        4        3                                                                                1
-1  2           3     3    3   3                                                                    1
-1     3   4        2    4                                                                          1
-1      2      3 4 2   3      3                                                                     1
-1 2                        3   4                                                                   1
-1    2   3       4  4                                                                              1
-1              2         4                                                                         1
-1   3 3     4        3       3                                                                     1
-1 4    3  3     3  4      3                                                                        1
-1            3         5                                                                           1
-1  2 3  2        3               3                                                                 1
-1                   2    2  3 3                                                                    1
-1 3   4    2  2                                                                                    1
-1       2            3            3                                                                1
-1   4        3           3     3                                                                   1
-1               3 3   C4                                                                           1
-1  3  3   3                 4                                                                      1
-1            3      3   2                                                                          1
-1 2     3                        3                                                                 1
-1    2     3   4 3        4  2                                                                     1
-1                     3                                                                            1
-1  3   3    3      2                                                                               1
-1                                                                                                  1
-1        3    4                                                                                    1
-1    3                                                                                             1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-1                                                                                                  1
-0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+10 345CO*+#HW_|"
+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+O                                                                  OO                              O
+O  2  2   2    2                                                    OO                             O
+O   3  3    3        3  2    2                                       O                             O
+O        4       3        3                                          O                             O
+O    2     3  3     3 2  3                                           O                             O
+O 4   2     2     2  3      3                                        OOO                           O
+O   2           2  3   3     4                                        OO                           O
+O  3 3 4   3 4      3    2 2                                           OOO                         O
+O        4        3                                                     OO                         O
+O  2           3     3    3   3                                          OO                        O
+O     3   4        2    4                                                OO                        O
+O      2      3 4 2   3      3                                           OO                        O
+O 2                        3   4                                         OO                        O
+O    2   3       4  4                                                    OO                        O
+O              2         4                                               OO                        O
+O   3 3     4        3       3                                            OO                       O
+O 4    3  3     3  4      3                                                OO                      O
+O            3         5                                                   OO                      O
+O  2 3  2        3               3                                         OO                      O
+O                   2    2  3 3                                            OO                      O
+O 3   4    2  2                                                            OO                      O
+O       2            3            3      "_|                              OO                       O
+O   4        3           3     3         WHW  _|"                        OO                        O
+O               3 3   C4             _|_      #HW                       OO                         O
+O  3  3   3                 4        #HW __|_                          OO                          O
+O            3      3   2                #WH#   _"|                    OO                          O
+O 2     3                        3              #HW                    OO                          O
+O    2     3   4 3        4  2                                          OO                         O
+O                     3                                                  OO                        O
+O  3   3    3      2                                                     OO                        O
+O                                                                         OO                       O
+O        3    4                                                           OO                       O
+O    3                                                                    OO                       O
+O                                                                         OO                       O
+O                                                                         OO                       O
+O                                                                        OO                        O
+O                                                                       OO                         O
+O                                                                      OO                          O
+O                                                                     OO                           O
+O                                                                     OO                           O
+O                                                                     OO                           O
+O                                                                     OO                           O
+O                                                                    OOO                           O
+O                                                                   OO OO                          O
+O                                                                  OO   OO                         O
+O                                                                 OO    OO                         O
+O                                                                OO      OO                        O
+O                                                                OO     OO                         O
+O                                                                OO     OO                         O
+O                                                                OO      OO                        O
+O                                                                OO       OO                       O
+O                                                                OO       OO                       O
+O                                                                 OO      OO                       O
+O                                                                 OO      OO                       O
+O                                                                 OO      OO                       O
+O                                                                  OO     OO                       O
+O                                                                   OO    OO                       O
+O                                                                    OO   OO                       O
+O                                                                     OO OO                        O
+O                                                                      OOO                         O
+O                                                                      OO                          O
+O                                                                      OO                          O
+O                                                                      OO                          O
+O                                                                     OO                           O
+O                                                                    OO                            O
+O                                                                   OO                             O
+O                                                                  OO                              O
+O                                                                 OO                               O
+O                                                                 OO                               O
+O                                                                 OO                               O
+O                                                                 OO                               O
+O                                                                  OO                              O
+O                                                                   OO                             O
+O                                                                    OO                            O
+O                                                                   OOOOOO                         O
+O                                                                  OO  OOOO                        O
+O                                                                 OO     OOOOO                     O
+O                                                                 OO       OOOOO                   O
+O                                                                 OO         OOOOO                 O
+O                                                                OO           OOOOOOOO             O
+O                                                                OO              OOOOOOOO          O
+O                                                                OO                 OOOOOOOOOOO    O
+O       __|  _"_|                                               OO                      OOOOOOOOO  O
+O       #HW  #WH#                                               OO                          OOOOOOOO
+O                                                               OO                             OOOOO
+O   __"   _"_   "|"                                            OO                                  O
+O   H##   #H#   #WH                                            OO                                  O
+O                                                              OO                                  O
+O                                                          OOOOOO                                  O
+O                                                       OOOOOOOOO                                  O
+O                                                     OOOOO     OO                                 O
+O              OOOOOOOOOOOOOO                      OOOOO         OO                                O
+O    OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO           OO                                O
+OOOOOOOOOOOOOOOOO         OOOOOOOOOOOOOOOOOOOOOOOOO              OOO                               O
+OOOOOOO                                                           OO                               O
+O                                                                  OO                              O
+O                                                                  OO                              O
+O                                                                  OO                              O
+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO

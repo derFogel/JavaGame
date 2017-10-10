@@ -7,11 +7,12 @@ public class Narrator extends Character {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2L;
 	private LinkedList<Position> path;
+	private boolean next;
 
 	public Narrator(boolean player, int spawnx, int spawny, String path) {
 		super(player, spawnx, spawny, path);
+		next = false;
 	}
 	
 	public void init() {
@@ -20,7 +21,7 @@ public class Narrator extends Character {
 	}
 	
 	public void update() {
-		if (Game.dialog.getDialog().startsWith("tutorial") && Game.dialog.isOpen() == false) {
+		if (Game.dialog.isOpen() == false) {
 			if (path.size() > 0 && !isMoving() && calcDistanceTo(Game.player.x, Game.player.y) < 4) {
 				Position p = path.getFirst();
 				move(x - p.x, y - p.y);
@@ -36,8 +37,10 @@ public class Narrator extends Character {
 				} else if (Game.player.x < x) {
 					direction = Character.LEFT;
 				}
-				if (Game.dialog.getDialog() == "tutorial") {
+				
+				if (!next) {
 					Game.dialog.setDialog("tutorial_2");
+					next = true;
 				}
 			}
 		}

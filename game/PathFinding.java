@@ -30,32 +30,24 @@ public class PathFinding {
 	public LinkedList<Position> findPath(int startx, int starty, int endx, int endy) {
 		LinkedList<Position> out = new LinkedList<>();
 		LinkedList<Position> openList = new LinkedList<>();
-		
-		Position start = new Position();
-		start.x = startx;
-		start.y = starty;
-		start.prev = null;
+		LinkedList<Position> closedList = new LinkedList<>();
 		
 		Position end = new Position();
 		end.x = endx;
 		end.y = endy;
 		end.prev = null;
 		
+		Position start = new Position();
+		start.x = startx;
+		start.y = starty;
+		start.f = calcDistance(start, end);
+		start.prev = null;
+		
 		openList.add(start);
 		
 		while (openList.size() > 0) {
-			//int minD = Integer.MAX_VALUE;
-			//Position next = null;
-
-			//for (Position p : openList) {
-			//	if (calcDistance(p, end) < minD) {
-			//		next = p;
-			//	}
-			//}
-			
-			//openList.remove(next);
-			//out.add(next);
-			LinkedList<Position> changesList = new LinkedList<>();
+			Position shortestWay = new Position();
+			shortestWay.f = Integer.MAX_VALUE;
 			
 			for (Position p : openList) {
 				if (p.x == end.x && p.y == end.y) {
@@ -69,50 +61,57 @@ public class PathFinding {
 					return out;
 				}
 				
-				if (map[p.x - 1][p.y] && !isInList(openList, p.x - 1, p.y) && !isInList(changesList, p.x - 1, p.y)) {
-					Position n = new Position();
-					n.x = p.x - 1;
-					n.y = p.y;
-					n.prev = p;
-					changesList.add(n);
-				}
-				
-				if (map[p.x + 1][p.y] && !isInList(openList, p.x + 1, p.y) && !isInList(changesList, p.x + 1, p.y)) {
-					Position n = new Position();
-					n.x = p.x + 1;
-					n.y = p.y;
-					n.prev = p;
-					changesList.add(n);
-				}
-				
-				if (map[p.x][p.y - 1] && !isInList(openList, p.x, p.y - 1) && !isInList(changesList, p.x, p.y - 1)) {
-					Position n = new Position();
-					n.x = p.x;
-					n.y = p.y - 1;
-					n.prev = p;
-					changesList.add(n);
-				}
-				
-				if (map[p.x][p.y + 1] && !isInList(openList, p.x, p.y + 1) && !isInList(changesList, p.x, p.y + 1)) {
-					Position n = new Position();
-					n.x = p.x;
-					n.y = p.y + 1;
-					n.prev = p;
-					changesList.add(n);
+				if (p.f < shortestWay.f) {
+					shortestWay = p;
 				}
 			}
 			
-			for (Position p : changesList) {
-				openList.add(p);
+			closedList.add(shortestWay);
+			openList.remove(shortestWay);
+			
+			if (map[shortestWay.x - 1][shortestWay.y] && !isInList(openList, shortestWay.x - 1, shortestWay.y) && !isInList(closedList, shortestWay.x - 1, shortestWay.y)) {
+				Position n = new Position();
+				n.x = shortestWay.x - 1;
+				n.y = shortestWay.y;
+				n.prev = shortestWay;
+				n.f = calcDistance(n, end);
+				openList.add(n);
+			}
+			
+			if (map[shortestWay.x + 1][shortestWay.y] && !isInList(openList, shortestWay.x + 1, shortestWay.y) && !isInList(closedList, shortestWay.x + 1, shortestWay.y)) {
+				Position n = new Position();
+				n.x = shortestWay.x + 1;
+				n.y = shortestWay.y;
+				n.prev = shortestWay;
+				n.f = calcDistance(n, end);
+				openList.add(n);
+			}
+			
+			if (map[shortestWay.x][shortestWay.y - 1] && !isInList(openList, shortestWay.x, shortestWay.y - 1) && !isInList(closedList, shortestWay.x, shortestWay.y - 1)) {
+				Position n = new Position();
+				n.x = shortestWay.x;
+				n.y = shortestWay.y - 1;
+				n.prev = shortestWay;
+				n.f = calcDistance(n, end);
+				openList.add(n);
+			}
+			
+			if (map[shortestWay.x][shortestWay.y + 1] && !isInList(openList, shortestWay.x, shortestWay.y + 1) && !isInList(closedList, shortestWay.x, shortestWay.y + 1)) {
+				Position n = new Position();
+				n.x = shortestWay.x;
+				n.y = shortestWay.y + 1;
+				n.prev = shortestWay;
+				n.f = calcDistance(n, end);
+				openList.add(n);
 			}
 		}
 		
-		return out;
+		return null;
 	}
 	
-	/*private int calcDistance(Position current, Position target) {
-		return Math.abs(target.x - current.x) + Math.abs(target.y - current.y);
-	}*/
+	private int calcDistance(Position current, Position target) {
+		return Math.abs(current.x - target.x) + Math.abs(current.y - target.y);
+	}
 	
 	private boolean isInList(LinkedList<Position> list, int x, int y) {
 		for (Position p : list) {

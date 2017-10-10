@@ -11,5 +11,32 @@
 		"In dieser Kiste ist ein Spiel.  Wer es beherrscht, kann diese   Welt beherrschen.",
 		"Wie funktioniert es?",
 		"Nimm es dir! (E, wenn du an der Kiste stehst)"
+	],
+	"cant_swim" : [
+		"Ich kann nicht schwimmen."
+	],
+	"house" : [
+		"Das ist nicht mein Haus."
+	],
+	"game" : [
+		"Jeder Spieler bekommt 5 Karten.",
+		"Die hoehere Sticht. Die meisten Stiche gewinnen.",
+		"Such die eine Karte aus und     spiele sie. (Links, Recht,      Enter)",
+		"Der Gewinner bekommt zwei       bessere Karten"
+	],
+	"player" : [
+		"Du hast gewonnen."
+	],
+	"npc" : [
+		"Dein Gegner hat gewonnen"
+	],
+	"play" : [
+		"Lass uns spielen!"
+	],
+	"win" : [
+		"Du hast gewonnen und kannst     nach Hause."
+	],
+	"next" : [
+		"Viel Glueck!"
 	]
 }
